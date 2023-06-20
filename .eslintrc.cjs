@@ -26,5 +26,7 @@ module.exports = {
     'jsx-quotes': 0,
     'react/function-component-definition': 0,
     'arrow-body-style': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-noninteractive-element-interactions': 0,
   },
 };

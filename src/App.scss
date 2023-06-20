@@ -1,7 +1,8 @@
 /* reset default styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 
 body{
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Poppins', sans-serif;
 }
 *,
 *::before,
@@ -33,5 +34,5 @@ img {
 	vertical-align: top;
 }
 body{
-	background-color: rgb(49, 175, 253);
+	background-color: #B9E2FF;
 }
