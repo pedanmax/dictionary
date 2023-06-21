@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import {
-  AppBar, Box, Toolbar, Typography, IconButton, Drawer as Menu,
+  Box, IconButton, Drawer as MenuDrawer,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Navigation from '../Navigation/Navigation';
+import Logo from '../Logo/Logo';
+import './Drawer.scss';
 
 const Drawer = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
@@ -11,7 +13,18 @@ const Drawer = () => {
   const openDrawer = () => setIsOpenDrawer(true);
   return (
     <Box sx={{
-      flexGrow: 1, padding: '10px', display: 'flex', alignItems: 'center', maxHeight: '50px', boxSizing: 'border-box',
+      flexGrow: 1,
+      padding: '10px',
+      display: {
+        xs: 'flex',
+        sm: 'flex',
+        md: 'none',
+        lg: 'none',
+        xl: 'none',
+      },
+      alignItems: 'center',
+      maxHeight: '50px',
+      boxSizing: 'border-box',
     }}
     >
       <IconButton
@@ -24,31 +37,20 @@ const Drawer = () => {
       >
         <MenuIcon />
       </IconButton>
-      <Typography
-        sx={{ color: '#111a35', fontWeight: '700' }}
-        align='center'
-      >
-        Learn Words
-      </Typography>
-      <Menu
+      <MenuDrawer
         anchor='left'
         open={isOpenDrawer}
         onClose={closeDrawer}
         sx={{
           '& .MuiDrawer-paper': {
-            width: '200px',
+            width: '210px',
             backgroundColor: '#9ad5ff',
           },
         }}
       >
-        <Typography
-          sx={{ padding: '10px', color: '#111a35', fontWeight: '700' }}
-          align='center'
-        >
-          Learn Words
-        </Typography>
+        <Logo />
         <Navigation closeDrawer={closeDrawer} />
-      </Menu>
+      </MenuDrawer>
     </Box>
   );
 };
