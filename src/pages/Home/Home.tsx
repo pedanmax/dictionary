@@ -1,7 +1,10 @@
+import Form from '../../components/Form/Form';
 import './Home.scss';
 
 const Home = () => {
-  return <h1 className='home'>home</h1>;
+  return (
+    <Form />
+  );
 };
 
 export default Home;

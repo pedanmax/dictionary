@@ -19,7 +19,9 @@ const App = () => {
     >
       <Drawer />
       <Menu />
-      <Router />
+      <main style={{ flex: '1 1 auto' }}>
+        <Router />
+      </main>
       <Footer />
     </Container>
   );
