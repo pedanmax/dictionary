@@ -11,7 +11,7 @@ const Drawer = () => {
   const openDrawer = () => setIsOpenDrawer(true);
   return (
     <Box sx={{
-      flexGrow: 1, padding: '10px', display: 'flex', alignItems: 'center',
+      flexGrow: 1, padding: '10px', display: 'flex', alignItems: 'center', maxHeight: '50px', boxSizing: 'border-box',
     }}
     >
       <IconButton

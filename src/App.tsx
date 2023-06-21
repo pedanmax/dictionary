@@ -5,11 +5,11 @@ import './App.scss';
 
 const App = () => {
   return (
-    <>
+    <div className='app'>
       <Drawer />
       <Router />
       <Footer />
-    </>
+    </div>
   );
 };
 

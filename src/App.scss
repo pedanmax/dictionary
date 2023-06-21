@@ -36,3 +36,8 @@ img {
 body{
 	background-color: #B9E2FF;
 }
+.app{
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
