@@ -31,7 +31,7 @@ const Form = () => {
       noValidate
     >
       <Stack spacing={4} direction={{ md: 'row' }}>
-        <FormControl sx={{ flex: { sm: '1 1 auto', md: '0 1 316px' } }}>
+        <FormControl sx={{ flex: { sm: '1 1 auto', md: '0 1 316px' }, marginBottom: '20px' }}>
           <Controller
             control={control}
             name='word'
@@ -58,7 +58,7 @@ const Form = () => {
             )}
           />
         </FormControl>
-        <FormControl sx={{ flex: { sm: '1 1 auto', md: '0 1 316px' } }}>
+        <FormControl sx={{ flex: { sm: '1 1 auto', md: '0 1 316px' }, marginBottom: '20px' }}>
           <Controller
             control={control}
             name='translateWord'
@@ -105,17 +105,17 @@ const Form = () => {
                 name='group'
                 label='Group'
                 variant="standard"
-                error={Boolean(errors.translateWord)}
+                error={Boolean(errors.group)}
                 inputRef={ref}
-                helperText={errors.translateWord?.message}
+                helperText={errors.group?.message}
               />
             )}
           />
         </FormControl>
         <Button
-          sx={{ minWidth: '120px' }}
+          sx={{ minWidth: '120px', height: '50px' }}
           type='submit'
-          variant="outlined"
+          variant="contained"
           onClick={() => console.log(errors)}
         >
           Add word
