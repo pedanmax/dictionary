@@ -9,8 +9,9 @@ const App = () => {
   return (
     <Container sx={{
       padding: {
+        xs: '0px',
         sm: '0px',
-        md: '0px 24px 0px 24px',
+        md: '0px',
       },
       display: 'flex',
       flexDirection: 'column',
@@ -19,7 +20,7 @@ const App = () => {
     >
       <Drawer />
       <Menu />
-      <main style={{ flex: '1 1 auto' }}>
+      <main style={{ flex: '1 1 auto', padding: '10px' }}>
         <Router />
       </main>
       <Footer />
