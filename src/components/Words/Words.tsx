@@ -1,7 +1,5 @@
 import { useSelector } from 'react-redux';
-import {
-  Box, Typography, List, ListItem,
-} from '@mui/material';
+import { Box, Typography, List } from '@mui/material';
 import { StoreType } from '../../types/types';
 import Word from './Word';
 
@@ -22,7 +20,6 @@ const Words = () => {
               <Word word={word.word} key={word.id} id={word.id} />
             ))}
           </List>
-
         </>
       )}
     </Box>

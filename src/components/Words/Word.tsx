@@ -6,9 +6,12 @@ import { actions } from '../../Redux/reducers/words.slice';
 const Word = ({ word, id } : { word: string, id: number }) => {
   const dispatch = useDispatch();
   const removeWord = () => dispatch(actions.removeWord(id));
+  // console.log(id);
   return (
     <ListItem
-      sx={{ width: 'auto', padding: '0px' }}
+      sx={{
+        width: 'auto', padding: '0px', transition: 'all 1s ease', opacity: '1',
+      }}
     >
       <Typography>
         {word}
