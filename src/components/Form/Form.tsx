@@ -1,11 +1,14 @@
-/* eslint-disable max-len */
 import { useForm, Controller } from 'react-hook-form';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Button, FormControl, Stack, TextField,
 } from '@mui/material';
+import { WordType, SubmitType, StoreType } from '../../types/types';
+import { actions } from '../../Redux/reducers/words.slice';
 import './Form.scss';
 
 const Form = () => {
+  const dispatch = useDispatch();
   const {
     handleSubmit, reset, control, formState: { errors },
   } = useForm({
@@ -15,15 +18,19 @@ const Form = () => {
       group: '',
     },
   });
-  const onSubmit = (data: { word: string, translateWord: string, group: string }) => {
+  const onSubmit = (data: SubmitType) => {
     reset({
       word: '',
       translateWord: '',
       group: '',
     });
-    console.log(data);
-    console.log(errors);
+    const id = Math.floor(Math.random() * 1000);
+    const word:WordType = { ...data, id };
+    dispatch(actions.addWord(word));
   };
+  const words = useSelector((state:StoreType) => state.words);
+
+  console.log(words);
   return (
     <form
       className='form'
@@ -113,10 +120,9 @@ const Form = () => {
           />
         </FormControl>
         <Button
-          sx={{ minWidth: '120px', height: '50px' }}
+          sx={{ minWidth: '120px', height: '50px', '&.MuiButton-root:hover': { backgroundColor: '#004668' } }}
           type='submit'
           variant="contained"
-          onClick={() => console.log(errors)}
         >
           Add word
         </Button>
