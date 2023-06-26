@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { WordType } from '../../types/types';
 
-const initialState = [] as WordType[];
+const initialState: WordType[] = [];
 
 export const words = createSlice({
   name: 'words',

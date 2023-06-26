@@ -1,8 +1,12 @@
 import { Typography, Box } from '@mui/material';
+import { useSelector } from 'react-redux';
 import Form from '../../components/Form/Form';
+import Words from '../../components/Words/Words';
+import { StoreType } from '../../types/types';
 import './Home.scss';
 
 const Home = () => {
+  const words = useSelector((state:StoreType) => state.words);
   return (
     <Box>
       <Typography
@@ -12,9 +16,10 @@ const Home = () => {
         textAlign='center'
         mb='20px'
       >
-        Add your first word!
+        {words?.length ? 'Add new word!' : 'Add your first word!'}
       </Typography>
       <Form />
+      {Boolean(words?.length) && <Words />}
     </Box>
   );
 };

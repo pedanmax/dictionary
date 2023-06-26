@@ -36,6 +36,7 @@ const Form = () => {
       className='form'
       onSubmit={handleSubmit(onSubmit)}
       noValidate
+      style={{ marginBottom: '20px' }}
     >
       <Stack spacing={4} direction={{ md: 'row' }}>
         <FormControl sx={{ flex: { sm: '1 1 auto', md: '0 1 316px' }, marginBottom: '20px' }}>

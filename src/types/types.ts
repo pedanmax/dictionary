@@ -14,3 +14,7 @@ export type WordType = {
   group: string,
   id: number,
 };
+
+export type NavigationProps = {
+  closeDrawer?: () => void;
+};
