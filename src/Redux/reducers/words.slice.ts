@@ -11,6 +11,11 @@ export const words = createSlice({
       const word = action.payload;
       state.push(word);
     },
+    removeWord: (state, action) => {
+      const word = action.payload;
+      const removedState = state.filter((item) => item.id === word.id);
+      return removedState;
+    },
   },
 });
 

@@ -1,13 +1,22 @@
-import { Typography } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { Typography, ListItem, IconButton } from '@mui/material';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { actions } from '../../Redux/reducers/words.slice';
 
-const Word = ({ word } : { word: string }) => {
+const Word = ({ word, id } : { word: string, id: number }) => {
+  const dispatch = useDispatch();
+  const removeWord = () => dispatch(actions.removeWord(id));
   return (
-    <Typography
-      component='li'
-      sx={{ width: 'auto' }}
+    <ListItem
+      sx={{ width: 'auto', padding: '0px' }}
     >
-      {word}
-    </Typography>
+      <Typography>
+        {word}
+      </Typography>
+      <IconButton onClick={removeWord} size='small'>
+        <HighlightOffIcon />
+      </IconButton>
+    </ListItem>
   );
 };
 

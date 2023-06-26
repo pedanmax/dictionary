@@ -19,7 +19,7 @@ const Words = () => {
           }}
           >
             {words?.map((word) => (
-              <Word word={word.word} key={word.id} />
+              <Word word={word.word} key={word.id} id={word.id} />
             ))}
           </List>
 
