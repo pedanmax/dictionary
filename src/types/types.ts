@@ -1,5 +1,5 @@
 export type StoreType = {
-  words: [WordType],
+  words?: [WordType],
 };
 
 export type SubmitType = {
