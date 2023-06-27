@@ -128,7 +128,12 @@ const Form = () => {
           />
         </FormControl>
         <Button
-          sx={{ minWidth: '120px', height: '50px', '&.MuiButton-root:hover': { backgroundColor: '#004668' } }}
+          sx={{
+            minWidth: '120px',
+            height: '50px',
+            '&.MuiButton-root': { backgroundColor: '#004668' },
+            '&.MuiButton-root:hover': { backgroundColor: '#003954' },
+          }}
           type='submit'
           variant="contained"
         >

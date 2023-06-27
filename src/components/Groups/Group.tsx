@@ -2,11 +2,11 @@ import { Typography, Button, Card, CardContent, CardActions } from '@mui/materia
 import { useSelector, useDispatch } from 'react-redux';
 
 export type GroupProps = {
-  group: string,
-  count: number,
+  group: string | undefined,
+  count: number | undefined,
 };
 
-const Group = () => {
+const Group = ({ group, count } : GroupProps) => {
   return (
     <Card
       sx={{
@@ -25,7 +25,7 @@ const Group = () => {
           fontWeight='700'
           sx={{ wordWrap: 'break-word' }}
         >
-          Sport
+          {group}
         </Typography>
         <Typography
           fontSize='12px'
@@ -37,12 +37,12 @@ const Group = () => {
             opacity: '0.5',
           }}
         >
-          7
+          {count}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size='small' variant='contained'>Select</Button>
-        <Button size='small' variant='contained'>Remove</Button>
+        <Button size='small' variant='contained' sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}>Select</Button>
+        <Button size='small' variant='contained' sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}>Remove</Button>
       </CardActions>
     </Card>
   );
