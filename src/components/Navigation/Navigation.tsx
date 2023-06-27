@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import {
-  List, ListItem, ListItemButton, ListItemIcon, Box,
+  List, ListItem, ListItemButton, ListItemIcon, Box, Typography,
 } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import SchoolIcon from '@mui/icons-material/School';
@@ -22,28 +22,34 @@ const Navigation = ({ closeDrawer } : NavigationProps) => {
       }}
       >
         <ListItem onClick={closeDrawer}>
-          <ListItemButton>
-            <ListItemIcon sx={{ minWidth: '35px' }}>
-              <HomeIcon />
-            </ListItemIcon>
-            <Link className='link' to="/">Home</Link>
-          </ListItemButton>
+          <Link className='link' to='/'>
+            <ListItemButton>
+              <ListItemIcon sx={{ minWidth: '35px' }}>
+                <HomeIcon />
+              </ListItemIcon>
+              <Typography fontWeight='500' color='#01012d'>Home</Typography>
+            </ListItemButton>
+          </Link>
         </ListItem>
         <ListItem onClick={closeDrawer}>
-          <ListItemButton>
-            <ListItemIcon sx={{ minWidth: '35px' }}>
-              <SchoolIcon />
-            </ListItemIcon>
-            <Link className='link' to="/learn">Learn</Link>
-          </ListItemButton>
+          <Link className='link' to='/learn'>
+            <ListItemButton>
+              <ListItemIcon sx={{ minWidth: '35px' }}>
+                <HomeIcon />
+              </ListItemIcon>
+              <Typography fontWeight='500' color='#01012d'>Learn</Typography>
+            </ListItemButton>
+          </Link>
         </ListItem>
         <ListItem onClick={closeDrawer}>
-          <ListItemButton>
-            <ListItemIcon sx={{ minWidth: '35px' }}>
-              <PsychologyAltIcon />
-            </ListItemIcon>
-            <Link className='link' to="/test">Test</Link>
-          </ListItemButton>
+          <Link className='link' to='/test'>
+            <ListItemButton>
+              <ListItemIcon sx={{ minWidth: '35px' }}>
+                <HomeIcon />
+              </ListItemIcon>
+              <Typography fontWeight='500' color='#01012d'>Test</Typography>
+            </ListItemButton>
+          </Link>
         </ListItem>
       </List>
     </Box>

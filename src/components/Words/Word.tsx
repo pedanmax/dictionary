@@ -6,7 +6,6 @@ import { actions } from '../../Redux/reducers/words.slice';
 const Word = ({ word, id } : { word: string, id: number }) => {
   const dispatch = useDispatch();
   const removeWord = () => dispatch(actions.removeWord(id));
-  // console.log(id);
   return (
     <ListItem
       sx={{

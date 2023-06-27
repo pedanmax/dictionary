@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -9,6 +10,7 @@ import './Form.scss';
 
 const Form = () => {
   const dispatch = useDispatch();
+
   const {
     handleSubmit, reset, control, formState: { errors },
   } = useForm({
@@ -18,6 +20,7 @@ const Form = () => {
       group: '',
     },
   });
+
   const onSubmit = (data: SubmitType) => {
     reset({
       word: '',
@@ -28,9 +31,13 @@ const Form = () => {
     const word:WordType = { ...data, id };
     dispatch(actions.addWord(word));
   };
+
   const words = useSelector((state:StoreType) => state.words);
 
-  console.log(words);
+  useEffect(() => {
+    localStorage.setItem('words', JSON.stringify(words));
+  }, [words]);
+  // console.log(words);
   return (
     <form
       className='form'

@@ -49,7 +49,7 @@ const Footer = () => {
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
-              color: '#01012d',
+              color: '#npm run',
               fontWeight: '500',
               transition: 'all 0.3s',
               '&.MuiLink-underlineNone:hover': {
