@@ -1,6 +1,7 @@
 import { Typography, Button, Card, CardContent, CardActions } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
-import { actions } from '../../Redux/reducers/activeGroup.slice';
+import { actions as setACtiveGroup } from '../../Redux/reducers/activeGroup.slice';
+import { actions as wordOperations } from '../../Redux/reducers/words.slice';
 import { StoreType } from '../../types/types';
 
 export type GroupProps = {
@@ -11,12 +12,19 @@ export type GroupProps = {
 const Group = ({ group, count } : GroupProps) => {
   const dispatch = useDispatch();
   const activeGroup = useSelector((state: StoreType) => state.activeGroup);
+  const allWords = useSelector((state: StoreType) => state.words);
   const active = activeGroup === group;
+  // set active group by click 'select' button
   const handleActiveGroup = () => {
-    dispatch(actions.setActiveGroup(group));
+    dispatch(setACtiveGroup.setActiveGroup(group));
     localStorage.setItem('activeGroup', group || '');
   };
 
+  // remove group by click 'remove' button
+  const removeGroupFromWords = () => {
+    const res = allWords?.filter((words) => words.group === group);
+    res?.forEach((word) => dispatch(wordOperations.removeWord(word.id)));
+  };
   return (
     <Card
       sx={{
@@ -61,7 +69,14 @@ const Group = ({ group, count } : GroupProps) => {
         >
           Select
         </Button>
-        <Button size='small' variant='contained' sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}>Remove</Button>
+        <Button
+          onClick={() => removeGroupFromWords()}
+          size='small'
+          variant='contained'
+          sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}
+        >
+          Remove
+        </Button>
       </CardActions>
     </Card>
   );
