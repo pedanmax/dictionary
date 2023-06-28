@@ -1,5 +1,6 @@
 export type StoreType = {
   words?: [WordType],
+  activeGroup: string,
 };
 
 export type SubmitType = {

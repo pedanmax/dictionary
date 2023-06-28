@@ -6,7 +6,7 @@ const Learn = () => {
   return (
     <Box>
       <Box mb='30px'>
-        <Typography
+        {/* <Typography
           fontWeight='700'
           fontSize='30px'
           component='h2'
@@ -15,7 +15,7 @@ const Learn = () => {
           color='#01012d'
         >
           You can learn words here!
-        </Typography>
+        </Typography> */}
         <Typography
           fontWeight='500'
           fontSize='20px'

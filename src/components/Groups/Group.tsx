@@ -1,5 +1,7 @@
 import { Typography, Button, Card, CardContent, CardActions } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
+import { actions } from '../../Redux/reducers/activeGroup.slice';
+import { StoreType } from '../../types/types';
 
 export type GroupProps = {
   group: string | undefined,
@@ -7,11 +9,16 @@ export type GroupProps = {
 };
 
 const Group = ({ group, count } : GroupProps) => {
+  const dispatch = useDispatch();
+  const activeGroup = useSelector((state: StoreType) => state.activeGroup);
+  const active = activeGroup === group;
   return (
     <Card
       sx={{
         maxWidth: '150px',
         position: 'relative',
+        boxShadow: active ? '0px 0px 10px 0px #01012d' : '0',
+        transition: 'all 0.3s ease',
       }}
     >
       <CardContent>
@@ -41,7 +48,14 @@ const Group = ({ group, count } : GroupProps) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size='small' variant='contained' sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}>Select</Button>
+        <Button
+          onClick={() => dispatch(actions.setActiveGroup(group))}
+          size='small'
+          variant='contained'
+          sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}
+        >
+          Select
+        </Button>
         <Button size='small' variant='contained' sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}>Remove</Button>
       </CardActions>
     </Card>

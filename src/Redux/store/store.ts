@@ -1,8 +1,10 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { reducer as addWord } from '../reducers/words.slice';
+import { reducer as wordsSlice } from '../reducers/words.slice';
+import { reducer as activeGroupSlice } from '../reducers/activeGroup.slice';
 
 const reducers = combineReducers({
-  words: addWord,
+  words: wordsSlice,
+  activeGroup: activeGroupSlice,
 });
 
 const store = configureStore({
