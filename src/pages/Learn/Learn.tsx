@@ -1,21 +1,12 @@
 import { Typography, Box } from '@mui/material';
 import Groups from '../../components/Groups/Groups';
+import LearnPlace from '../../components/LearnPlace/LearnPlace';
 import './Learn.scss';
 
 const Learn = () => {
   return (
     <Box>
       <Box mb='30px'>
-        {/* <Typography
-          fontWeight='700'
-          fontSize='30px'
-          component='h2'
-          textAlign='center'
-          mb='20px'
-          color='#01012d'
-        >
-          You can learn words here!
-        </Typography> */}
         <Typography
           fontWeight='500'
           fontSize='20px'
@@ -27,6 +18,7 @@ const Learn = () => {
         </Typography>
       </Box>
       <Groups />
+      <LearnPlace />
     </Box>
   );
 };

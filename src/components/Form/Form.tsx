@@ -91,7 +91,7 @@ const Form = () => {
                 autoComplete='off'
                 type='text'
                 name='translate'
-                label='Translate'
+                label='Translation'
                 variant="standard"
                 error={Boolean(errors.translateWord)}
                 inputRef={ref}

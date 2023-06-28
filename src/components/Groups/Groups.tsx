@@ -23,6 +23,7 @@ const Groups = () => {
       flexWrap='wrap'
       gap='20px'
       justifyContent='center'
+      mb='30px'
     >
       {groups.length > 0 && groups.map((group, index) => {
         return (
