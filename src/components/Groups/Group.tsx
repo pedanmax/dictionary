@@ -12,6 +12,11 @@ const Group = ({ group, count } : GroupProps) => {
   const dispatch = useDispatch();
   const activeGroup = useSelector((state: StoreType) => state.activeGroup);
   const active = activeGroup === group;
+  const handleActiveGroup = () => {
+    dispatch(actions.setActiveGroup(group));
+    localStorage.setItem('activeGroup', group || '');
+  };
+
   return (
     <Card
       sx={{
@@ -49,7 +54,7 @@ const Group = ({ group, count } : GroupProps) => {
       </CardContent>
       <CardActions>
         <Button
-          onClick={() => dispatch(actions.setActiveGroup(group))}
+          onClick={handleActiveGroup}
           size='small'
           variant='contained'
           sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}

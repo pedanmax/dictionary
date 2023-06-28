@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Stack } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { WordType, StoreType } from '../../types/types';

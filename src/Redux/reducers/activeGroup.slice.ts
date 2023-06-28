@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = localStorage.getItem('activeGroup') || '';
+
 export const activeGroup = createSlice({
   name: 'activeGroup',
-  initialState: '',
+  initialState,
   reducers: {
-    setActiveGroup: (state, action) => {
+    setActiveGroup: (_, action) => {
       const group = action.payload;
       return group;
     },
