@@ -1,6 +1,6 @@
 import { Typography, Button, Card, CardContent, CardActions } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
-import { actions as setACtiveGroup } from '../../Redux/reducers/activeGroup.slice';
+import { actions as setActiveGroup } from '../../Redux/reducers/activeGroup.slice';
 import { actions as wordOperations } from '../../Redux/reducers/words.slice';
 import { StoreType } from '../../types/types';
 
@@ -14,16 +14,23 @@ const Group = ({ group, count } : GroupProps) => {
   const activeGroup = useSelector((state: StoreType) => state.activeGroup);
   const allWords = useSelector((state: StoreType) => state.words);
   const active = activeGroup === group;
+
   // set active group by click 'select' button
   const handleActiveGroup = () => {
-    dispatch(setACtiveGroup.setActiveGroup(group));
+    dispatch(setActiveGroup.setActiveGroup(group));
     localStorage.setItem('activeGroup', group || '');
   };
 
   // remove group by click 'remove' button
   const removeGroupFromWords = () => {
-    const res = allWords?.filter((words) => words.group === group);
-    res?.forEach((word) => dispatch(wordOperations.removeWord(word.id)));
+    const filteredWords = allWords?.filter((words) => words.group === group);
+    const rest = allWords?.filter((words) => words.group !== group);
+    filteredWords?.forEach((word) => dispatch(wordOperations.removeWord(word.id)));
+    localStorage.setItem('words', JSON.stringify(rest));
+    if (active) {
+      dispatch(setActiveGroup.setActiveGroup(''));
+      localStorage.setItem('activeGroup', '');
+    }
   };
   return (
     <Card
@@ -32,6 +39,7 @@ const Group = ({ group, count } : GroupProps) => {
         position: 'relative',
         boxShadow: active ? '0px 0px 10px 0px #01012d' : '0',
         transition: 'all 0.3s ease',
+        cursor: 'pointer',
       }}
     >
       <CardContent>

@@ -1,12 +1,16 @@
+/* eslint-disable max-len */
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Box, Typography, Stack, IconButton, Button } from '@mui/material';
+import { Stack, Button } from '@mui/material';
 import { StoreType } from '../../types/types';
+import LearnItem from './LearnItem';
 
 const LearnPlace = () => {
+  const [swapped, setSwapped] = useState(false);
   const allWords = useSelector((state:StoreType) => state.words);
   const activeGroup = useSelector((state:StoreType) => state.activeGroup);
   const words = allWords?.filter((word) => word.group === activeGroup);
-  console.log(words);
+
   return (
     <Stack
       sx={{
@@ -14,7 +18,7 @@ const LearnPlace = () => {
         padding: '10px',
         borderRadius: '5px',
         boxSizing: 'border-box',
-        maxWidth: '500px',
+        maxWidth: '1000px',
         margin: '0 auto',
       }}
       alignItems='center'
@@ -25,8 +29,8 @@ const LearnPlace = () => {
         rowGap='10px'
         flexWrap='wrap'
         mb='20px'
-        justifyContent='space-around'
         width='100%'
+        justifyContent='space-between'
       >
         <Button
           variant='contained'
@@ -42,40 +46,41 @@ const LearnPlace = () => {
         >
           Show translate
         </Button>
+        <Button
+          onClick={() => setSwapped((prev) => !prev)}
+          variant='contained'
+          size='small'
+          sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}
+        >
+          Swap
+        </Button>
       </Stack>
       <Stack
-        direction='row'
-        gap='40px'
+        direction='column'
         width='100%'
+        justifyContent='space-between'
       >
-        <Box
-          sx={{
-            width: '100%',
-          }}
-        >
-          <Typography component='h5' fontWeight='500' fontSize='20px' mb='15px' textAlign='center'>Words</Typography>
-          {words?.map((word) => {
-            return (
-              <Typography key={word.id} fontSize='18px' textAlign='center'>
-                {word.word}
-              </Typography>
+        {words?.map((word) => {
+          return !swapped
+            ? (
+              <LearnItem
+                right={word.word}
+                left={word.translateWord}
+                key={word.id}
+                visible={false}
+                id={word.id}
+              />
+            )
+            : (
+              <LearnItem
+                right={word.translateWord}
+                left={word.word}
+                key={word.id}
+                visible={false}
+                id={word.id}
+              />
             );
-          })}
-        </Box>
-        <Box
-          sx={{
-            width: '100%',
-          }}
-        >
-          <Typography component='h5' fontWeight='500' fontSize='20px' mb='15px' textAlign='center'>Translation</Typography>
-          {words?.map((word) => {
-            return (
-              <Typography key={word.id} fontSize='18px' textAlign='center'>
-                {word.translateWord}
-              </Typography>
-            );
-          })}
-        </Box>
+        })}
       </Stack>
     </Stack>
   );

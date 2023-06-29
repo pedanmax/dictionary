@@ -1,9 +1,12 @@
+import { useSelector } from 'react-redux';
 import { Typography, Box } from '@mui/material';
 import Groups from '../../components/Groups/Groups';
 import LearnPlace from '../../components/LearnPlace/LearnPlace';
 import './Learn.scss';
+import { StoreType } from '../../types/types';
 
 const Learn = () => {
+  const activeGroup = useSelector((state: StoreType) => state.activeGroup);
   return (
     <Box>
       <Box mb='30px'>
@@ -18,7 +21,7 @@ const Learn = () => {
         </Typography>
       </Box>
       <Groups />
-      <LearnPlace />
+      {activeGroup && <LearnPlace />}
     </Box>
   );
 };
