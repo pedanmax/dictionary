@@ -8,6 +8,7 @@ export const activeGroup = createSlice({
   reducers: {
     setActiveGroup: (_, action) => {
       const group = action.payload;
+      localStorage.setItem('activeGroup', group || '');
       return group;
     },
   },

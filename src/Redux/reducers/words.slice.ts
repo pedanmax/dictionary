@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import { WordType } from '../../types/types';
 
@@ -11,11 +12,29 @@ export const words = createSlice({
     addWord: (state, action) => {
       const word = action.payload;
       state.push(word);
+      localStorage.setItem('words', JSON.stringify(state));
     },
     removeWord: (state, action) => {
       const wordId = action.payload;
       const removedState = state.filter((item) => item.id !== wordId);
+      localStorage.setItem('words', JSON.stringify(removedState));
       return removedState;
+    },
+    visibilityWord: (state, action) => {
+      const newState = state.forEach((word) => {
+        if (word.id === action.payload) {
+          word.visible = !word.visible;
+        }
+      });
+      return newState;
+    },
+    visibilityAllWord: (state, action) => {
+      const newState = state.forEach((word) => {
+        if (action.payload) {
+          word.visible = false;
+        } else word.visible = true;
+      });
+      return newState;
     },
   },
 });

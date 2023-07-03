@@ -13,9 +13,6 @@ const Groups = () => {
   const groups = groupsName.map((group) => {
     return words?.filter((word) => word.group === group);
   });
-  // words from active group
-
-  // const activeGroupArray = words?.filter((word) => word.group === activeGroup);
   return (
     <Stack
       direction='row'

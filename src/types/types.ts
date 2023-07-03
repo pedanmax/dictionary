@@ -1,6 +1,7 @@
 export type StoreType = {
   words?: [WordType],
   activeGroup: string,
+  wordsVisibility: boolean,
 };
 
 export type SubmitType = {
@@ -14,6 +15,7 @@ export type WordType = {
   translateWord: string,
   group: string,
   id: number,
+  visible:boolean,
 };
 
 export type NavigationProps = {

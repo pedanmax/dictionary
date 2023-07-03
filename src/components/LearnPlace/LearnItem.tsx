@@ -5,18 +5,18 @@ import LearnWord from './LearnWord';
 export type LearnItemProps = {
   left: string,
   right: string,
-  visible: boolean,
   id: number,
+  visible: boolean,
 };
 
-const LearnItem = ({ left, right, visible, id } : LearnItemProps) => {
+const LearnItem = ({ left, right, id, visible } : LearnItemProps) => {
   return (
     <Stack
       direction='row'
       alignItems='center'
     >
       <LearnWord wordOriginal={left} />
-      <LearnTranslate translate={right} visible={visible} id={id} />
+      <LearnTranslate translate={right} id={id} visible={visible} />
     </Stack>
   );
 };

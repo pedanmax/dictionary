@@ -1,10 +1,9 @@
-import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   Button, FormControl, Stack, TextField,
 } from '@mui/material';
-import { WordType, SubmitType, StoreType } from '../../types/types';
+import { WordType, SubmitType } from '../../types/types';
 import { actions } from '../../Redux/reducers/words.slice';
 import './Form.scss';
 
@@ -28,16 +27,11 @@ const Form = () => {
       group: '',
     });
     const id = Math.floor(Math.random() * 1000);
-    const word:WordType = { ...data, id };
+    const visible = false;
+    const word:WordType = { ...data, id, visible };
     dispatch(actions.addWord(word));
   };
 
-  const words = useSelector((state:StoreType) => state.words);
-
-  useEffect(() => {
-    localStorage.setItem('words', JSON.stringify(words));
-  }, [words]);
-  // console.log(words);
   return (
     <form
       className='form'

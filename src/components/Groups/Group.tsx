@@ -18,20 +18,18 @@ const Group = ({ group, count } : GroupProps) => {
   // set active group by click 'select' button
   const handleActiveGroup = () => {
     dispatch(setActiveGroup.setActiveGroup(group));
-    localStorage.setItem('activeGroup', group || '');
   };
 
   // remove group by click 'remove' button
   const removeGroupFromWords = () => {
     const filteredWords = allWords?.filter((words) => words.group === group);
-    const rest = allWords?.filter((words) => words.group !== group);
     filteredWords?.forEach((word) => dispatch(wordOperations.removeWord(word.id)));
-    localStorage.setItem('words', JSON.stringify(rest));
+
     if (active) {
       dispatch(setActiveGroup.setActiveGroup(''));
-      localStorage.setItem('activeGroup', '');
     }
   };
+
   return (
     <Card
       sx={{

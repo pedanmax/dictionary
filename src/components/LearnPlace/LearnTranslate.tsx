@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-import { useState } from 'react';
 import { Typography, Stack, IconButton } from '@mui/material';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -11,13 +10,12 @@ import { StoreType } from '../../types/types';
 
 type LearnTranslateProps = {
   translate: string,
-  visible: boolean,
   id: number,
+  visible: boolean,
 };
 
-const LearnTranslate = ({ translate, visible, id } : LearnTranslateProps) => {
+const LearnTranslate = ({ translate, id, visible } : LearnTranslateProps) => {
   const dispatch = useDispatch();
-  const [visibility, setVisibility] = useState(visible);
   const allWords = useSelector((state:StoreType) => state.words);
   const activeGroup = useSelector((state:StoreType) => state.activeGroup);
   const words = allWords?.filter((word) => word.group === activeGroup);
@@ -26,12 +24,12 @@ const LearnTranslate = ({ translate, visible, id } : LearnTranslateProps) => {
     dispatch(actions.removeWord(id));
     if (words?.length === 1) {
       dispatch(setActiveGroup.setActiveGroup(''));
+      dispatch(actions.removeWord(id));
       localStorage.setItem('activeGroup', '');
     }
   };
-  const toggleVisibility = () => {
-    setVisibility((prev) => !prev);
-  };
+
+  const toggleVisibility = () => dispatch(actions.visibilityWord(id));
 
   return (
     <Stack
@@ -42,7 +40,7 @@ const LearnTranslate = ({ translate, visible, id } : LearnTranslateProps) => {
       <Typography
         sx={{
           transition: 'all .6s ease',
-          opacity: visibility ? '1' : '0',
+          opacity: visible ? '1' : '0',
           flex: '1 1 auto',
           fontSize: {
             xs: '14px',
@@ -64,7 +62,7 @@ const LearnTranslate = ({ translate, visible, id } : LearnTranslateProps) => {
           <HighlightOffIcon />
         </IconButton>
         <IconButton size='small' onClick={toggleVisibility}>
-          {visibility ? <VisibilityIcon /> : <VisibilityOffIcon /> }
+          {visible ? <VisibilityIcon /> : <VisibilityOffIcon /> }
         </IconButton>
       </Stack>
     </Stack>
