@@ -15,7 +15,7 @@ const Word = ({ word, id } : { word: string, id: number }) => {
       <Typography>
         {word}
       </Typography>
-      <IconButton onClick={removeWord} size='small'>
+      <IconButton onClick={removeWord} size='small' color='primary'>
         <HighlightOffIcon />
       </IconButton>
     </ListItem>

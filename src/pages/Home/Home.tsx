@@ -15,6 +15,7 @@ const Home = () => {
         fontSize='30px'
         textAlign='center'
         mb='20px'
+        color='primary'
       >
         {words?.length ? 'Add new word!' : 'Add your first word!'}
       </Typography>

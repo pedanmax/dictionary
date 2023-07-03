@@ -2,7 +2,11 @@
 /* eslint-disable max-len */
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Stack, Button } from '@mui/material';
+import { Stack, IconButton } from '@mui/material';
+import ShuffleIcon from '@mui/icons-material/Shuffle';
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 import { StoreType } from '../../types/types';
 import { actions as wordsActions } from '../../Redux/reducers/words.slice';
 import { actions as wordsVisibility } from '../../Redux/reducers/wordsVisibility.slice';
@@ -48,36 +52,25 @@ const LearnPlace = () => {
     >
       <Stack
         direction='row'
-        columnGap='40px'
+        columnGap='10px'
         rowGap='10px'
         flexWrap='wrap'
         mb='20px'
         width='100%'
-        justifyContent='space-between'
+        justifyContent='center'
       >
-        <Button
-          variant='contained'
-          size='small'
-          sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}
-        >
-          Shuffle words
-        </Button>
-        <Button
+        <IconButton
           onClick={toggleVisibility}
-          variant='contained'
-          size='small'
-          sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}
+          color='primary'
         >
-          {!wordsIsShowing ? 'Show translate' : 'Hide translate'}
-        </Button>
-        <Button
-          onClick={() => setSwapped((prev) => !prev)}
-          variant='contained'
-          size='small'
-          sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}
-        >
-          Swap
-        </Button>
+          {!wordsIsShowing ? <LockOutlinedIcon /> : <LockOpenOutlinedIcon />}
+        </IconButton>
+        <IconButton size='small' color='primary' onClick={() => dispatch(wordsActions.shuffleWords())}>
+          <ShuffleIcon />
+        </IconButton>
+        <IconButton size='small' onClick={() => setSwapped((prev) => !prev)} color='primary'>
+          <SwapHorizIcon />
+        </IconButton>
       </Stack>
       <Stack
         direction='column'

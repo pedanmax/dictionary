@@ -58,10 +58,10 @@ const LearnTranslate = ({ translate, id, visible } : LearnTranslateProps) => {
         direction='row'
         width='70px'
       >
-        <IconButton size='small' onClick={removeWord}>
+        <IconButton size='small' onClick={removeWord} color='primary'>
           <HighlightOffIcon />
         </IconButton>
-        <IconButton size='small' onClick={toggleVisibility}>
+        <IconButton size='small' onClick={toggleVisibility} color='primary'>
           {visible ? <VisibilityIcon /> : <VisibilityOffIcon /> }
         </IconButton>
       </Stack>
