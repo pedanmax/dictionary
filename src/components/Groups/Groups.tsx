@@ -5,7 +5,7 @@ import Group from './Group';
 
 export type Array = WordType[];
 
-const Groups = () => {
+const Groups = ({ variant } : { variant : string }) => {
   const words = useSelector((state: StoreType) => state.words);
   // array with groups names
   const groupsName = [...new Set(words?.map((word) => (word.group)))];
@@ -13,6 +13,7 @@ const Groups = () => {
   const groups = groupsName.map((group) => {
     return words?.filter((word) => word.group === group);
   });
+
   return (
     <Stack
       direction='row'
@@ -28,6 +29,7 @@ const Groups = () => {
             key={index}
             group={group && group[0].group}
             count={group && group.length}
+            variant={variant}
           />
         );
       })}

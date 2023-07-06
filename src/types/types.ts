@@ -1,6 +1,7 @@
 export type StoreType = {
   words?: [WordType],
   activeGroup: string,
+  testGroup: string,
   wordsVisibility: boolean,
 };
 

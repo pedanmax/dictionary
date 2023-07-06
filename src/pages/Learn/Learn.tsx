@@ -14,7 +14,7 @@ const Learn = () => {
       <Box mb='30px'>
         <Typography
           fontWeight='500'
-          fontSize='20px'
+          fontSize='24px'
           component='h3'
           textAlign='center'
           color='#02025d'
@@ -22,7 +22,7 @@ const Learn = () => {
           Choose the right one group and get started!
         </Typography>
       </Box>
-      <Groups />
+      <Groups variant='learn' />
       {activeGroup && <LearnPlace />}
     </Box>
   )
