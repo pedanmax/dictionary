@@ -37,7 +37,6 @@ const Group = ({ group, count } : GroupProps) => {
         position: 'relative',
         boxShadow: active ? '0px 0px 10px 0px #01012d' : '0',
         transition: 'all 0.3s ease',
-        cursor: 'pointer',
       }}
     >
       <CardContent>

@@ -4,10 +4,12 @@ import Groups from '../../components/Groups/Groups';
 import LearnPlace from '../../components/LearnPlace/LearnPlace';
 import './Learn.scss';
 import { StoreType } from '../../types/types';
+import Empty from '../../components/Empty/Empty';
 
 const Learn = () => {
   const activeGroup = useSelector((state: StoreType) => state.activeGroup);
-  return (
+  const words = useSelector((state: StoreType) => state.words);
+  return words?.length ? (
     <Box>
       <Box mb='30px'>
         <Typography
@@ -23,7 +25,10 @@ const Learn = () => {
       <Groups />
       {activeGroup && <LearnPlace />}
     </Box>
-  );
+  )
+    : (
+      <Empty text='learn' />
+    );
 };
 
 export default Learn;

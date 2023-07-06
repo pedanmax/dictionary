@@ -3,10 +3,7 @@ import {
   List, ListItem, ListItemButton, ListItemIcon, Box, Typography,
 } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
-import SchoolIcon from '@mui/icons-material/School';
-import PsychologyAltIcon from '@mui/icons-material/PsychologyAlt';
 import { NavigationProps } from '../../types/types';
-import './Navigation.scss';
 
 const Navigation = ({ closeDrawer } : NavigationProps) => {
   return (
@@ -22,7 +19,7 @@ const Navigation = ({ closeDrawer } : NavigationProps) => {
       }}
       >
         <ListItem onClick={closeDrawer}>
-          <Link className='link' to='/'>
+          <Link to='/'>
             <ListItemButton>
               <ListItemIcon sx={{ minWidth: '35px' }}>
                 <HomeIcon />
@@ -32,7 +29,7 @@ const Navigation = ({ closeDrawer } : NavigationProps) => {
           </Link>
         </ListItem>
         <ListItem onClick={closeDrawer}>
-          <Link className='link' to='/learn'>
+          <Link to='/learn'>
             <ListItemButton>
               <ListItemIcon sx={{ minWidth: '35px' }}>
                 <HomeIcon />
@@ -42,7 +39,7 @@ const Navigation = ({ closeDrawer } : NavigationProps) => {
           </Link>
         </ListItem>
         <ListItem onClick={closeDrawer}>
-          <Link className='link' to='/test'>
+          <Link to='/test'>
             <ListItemButton>
               <ListItemIcon sx={{ minWidth: '35px' }}>
                 <HomeIcon />
