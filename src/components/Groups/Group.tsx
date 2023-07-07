@@ -36,6 +36,9 @@ const Group = ({ group, count, variant } : GroupProps) => {
     if (active) {
       dispatch(setActiveGroup.setActiveGroup(''));
     }
+    if (testGroup === group) {
+      dispatch(setTestGroup.setTestGroup(''));
+    }
   };
 
   // change shadow depending on the type of group
