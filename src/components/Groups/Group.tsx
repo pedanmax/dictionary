@@ -16,6 +16,7 @@ const Group = ({ group, count, variant } : GroupProps) => {
   const activeGroup = useSelector((state: StoreType) => state.activeGroup);
   const testGroup = useSelector((state: StoreType) => state.testGroup);
   const allWords = useSelector((state: StoreType) => state.words);
+  const { isStarted } = useSelector((state: StoreType) => state.stateTest);
   const active = activeGroup === group;
   const test = testGroup === group;
 
@@ -90,7 +91,7 @@ const Group = ({ group, count, variant } : GroupProps) => {
               Select
             </Button>
             <Button
-              onClick={() => removeGroupFromWords()}
+              onClick={removeGroupFromWords}
               size='small'
               variant='contained'
               sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}
@@ -102,11 +103,12 @@ const Group = ({ group, count, variant } : GroupProps) => {
         : (
           <CardActions>
             <Button
-              onClick={() => handleTestGroup()}
+              onClick={handleTestGroup}
               size='small'
               variant='contained'
               fullWidth
               sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}
+              disabled={isStarted}
             >
               Test
             </Button>
