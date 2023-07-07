@@ -7,6 +7,7 @@ import { StoreType } from '../../types/types';
 // after click on 'start test' disable start, reset, test buttons and change state 'start-test'
 // if test dosen't start inputs will be disbled
 // if all fields are not empty i will disable 'results' button
+// load words in random order
 
 const TestPlace = () => {
   const { isStarted } = useSelector((state: StoreType) => state.stateTest);
