@@ -30,7 +30,11 @@ const TestPlace = () => {
         spacing={2}
       >
         <Button
-          sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}
+          sx={{
+            '&.MuiButton-root': { backgroundColor: '#004668' },
+            '&.MuiButton-root:hover': { backgroundColor: '#003954' },
+            '&.Mui-disabled': { backgroundColor: '#516e83' },
+          }}
           variant='contained'
           onClick={handleResetTest}
           disabled={!isStarted}
@@ -38,7 +42,11 @@ const TestPlace = () => {
           Reset test
         </Button>
         <Button
-          sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}
+          sx={{
+            '&.MuiButton-root': { backgroundColor: '#004668' },
+            '&.MuiButton-root:hover': { backgroundColor: '#003954' },
+            '&.Mui-disabled': { backgroundColor: '#516e83' },
+          }}
           variant='contained'
           onClick={handleStartTest}
           disabled={isStarted}
@@ -47,7 +55,11 @@ const TestPlace = () => {
         </Button>
         <Button
           disabled
-          sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}
+          sx={{
+            '&.MuiButton-root': { backgroundColor: '#004668' },
+            '&.MuiButton-root:hover': { backgroundColor: '#003954' },
+            '&.Mui-disabled': { backgroundColor: '#516e83' },
+          }}
           variant='contained'
         >
           Results

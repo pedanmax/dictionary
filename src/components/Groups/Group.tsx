@@ -107,7 +107,11 @@ const Group = ({ group, count, variant } : GroupProps) => {
               size='small'
               variant='contained'
               fullWidth
-              sx={{ '&.MuiButton-root': { backgroundColor: '#004668' }, '&.MuiButton-root:hover': { backgroundColor: '#003954' } }}
+              sx={{
+                '&.MuiButton-root': { backgroundColor: '#004668' },
+                '&.MuiButton-root:hover': { backgroundColor: '#003954' },
+                '&.Mui-disabled': { backgroundColor: '#516e83' },
+              }}
               disabled={isStarted}
             >
               Test
