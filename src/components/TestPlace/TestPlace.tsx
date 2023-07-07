@@ -8,6 +8,8 @@ import { StoreType } from '../../types/types';
 // if test dosen't start inputs will be disbled
 // if all fields are not empty i will disable 'results' button
 // load words in random order
+// if user leave test page test and test group will be reset
+// i must save all values of translate to object
 
 const TestPlace = () => {
   const { isStarted } = useSelector((state: StoreType) => state.stateTest);

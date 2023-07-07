@@ -1,8 +1,15 @@
+export type TestFields = {
+  word: string,
+  translation: string,
+  inputTranslation: string,
+  correct: boolean,
+};
+
 export type StoreType = {
   words?: [WordType],
   activeGroup: string,
   testGroup: string,
-  stateTest: { isStarted: boolean };
+  stateTest: { isStarted: boolean, testFields: TestFields };
   wordsVisibility: boolean,
 };
 

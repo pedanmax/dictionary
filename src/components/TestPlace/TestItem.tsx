@@ -1,7 +1,9 @@
+/* eslint-disable max-len */
 import { useState } from 'react';
 import { Stack, Typography, TextField } from '@mui/material';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { actions as stateTest } from '../../Redux/reducers/stateTest.slice';
 import { StoreType } from '../../types/types';
 
 type TestItemProps = {
@@ -11,9 +13,21 @@ type TestItemProps = {
 };
 
 const TestItem = ({ word, id, translation } : TestItemProps) => {
+  const dispatch = useDispatch();
   const { isStarted } = useSelector((state: StoreType) => state.stateTest);
   const [value, setValue] = useState('');
-  const handleValue = (event: React.ChangeEvent<HTMLInputElement>) => setValue(event?.target.value);
+  const handleValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event?.target.value);
+    const object = {
+      [word]: {
+        word,
+        translation,
+        inputTranslation: event?.target.value,
+        correct: translation === event?.target.value.toLowerCase(),
+      },
+    };
+    dispatch(stateTest.writeTranslate(object));
+  };
   const comparing = value.toLowerCase() === translation;
   return (
     <Stack
