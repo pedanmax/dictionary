@@ -1,14 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { act } from 'react-dom/test-utils';
-import { words } from './words.slice';
-
-const example = {
-  word: {
-    word: 'example',
-    correctTranslate: 'приклад',
-    inoutTranslate: 'не знаю',
-  },
-};
 
 export const stateTest = createSlice({
   name: 'stateTest',

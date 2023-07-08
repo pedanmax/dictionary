@@ -12,8 +12,11 @@ import { StoreType } from '../../types/types';
 // if user leave test page test and test group will be reset
 // i must save all values of translate to object
 // enable 'results' button if all fields isn't empty
+// handle leave from page if test is started
 
 const TestPlace = () => {
+  const [stateResultButton, setStateResultButton] = useState(false);
+  const [stateTest, setStateTest] = useState('');
   const { isStarted, testFields } = useSelector((state: StoreType) => state.stateTest);
   const words = useSelector((state: StoreType) => state.words);
   const testGroup = useSelector((state: StoreType) => state.testGroup);
@@ -21,14 +24,21 @@ const TestPlace = () => {
   const dispatch = useDispatch();
   const handleStartTest = () => dispatch(actions.startTest(true));
   const handleResetTest = () => dispatch(actions.resetTest(false));
+  const handleResultTest = () => {
+    dispatch(actions.resetTest(false));
+  };
   const testFieldsKeys = Object.keys(testFields);
-  const [stateResultButton, setStateResultButton] = useState(false);
+
   useEffect(() => {
     if (testFieldsKeys.length === testWords?.length) {
-      const checkInputsValue = testFieldsKeys.map((key) => testFields[key].inputTranslation);
+      const checkInputsValue = testFieldsKeys.map((key) => testFields[key].inputTranslation.trim());
       setStateResultButton(checkInputsValue.every((value) => value !== ''));
+      const arrayWithResult = testFieldsKeys.map((key) => testFields[key].correct);
+      const trueTranslationCount = arrayWithResult.reduce((acc, next) => acc + next, 0);
+      setStateTest(`${trueTranslationCount}/${arrayWithResult.length}`);
     } else setStateResultButton(false);
   }, [testFieldsKeys, testWords?.length, testFields]);
+
   return (
     <Stack
       spacing={4}
@@ -71,6 +81,7 @@ const TestPlace = () => {
         </Button>
         <Button
           disabled={!stateResultButton}
+          onClick={handleResultTest}
           sx={{
             '&.MuiButton-root': { backgroundColor: '#004668' },
             '&.MuiButton-root:hover': { backgroundColor: '#003954' },

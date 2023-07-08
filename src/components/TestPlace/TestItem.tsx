@@ -8,11 +8,10 @@ import { StoreType } from '../../types/types';
 
 type TestItemProps = {
   word: string,
-  id: number,
   translation: string,
 };
 
-const TestItem = ({ word, id, translation } : TestItemProps) => {
+const TestItem = ({ word, translation } : TestItemProps) => {
   const dispatch = useDispatch();
   const { isStarted, testFields } = useSelector((state: StoreType) => state.stateTest);
   const [value, setValue] = useState('');
@@ -36,7 +35,7 @@ const TestItem = ({ word, id, translation } : TestItemProps) => {
     }
   }, [testFields]);
 
-  const comparing = value.toLowerCase() === translation;
+  const comparing = value.toLowerCase().trim() === translation;
   return (
     <Stack
       direction='row'

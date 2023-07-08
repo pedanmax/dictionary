@@ -12,7 +12,6 @@ const GroupTestItems = () => {
     return (
       <TestItem
         key={word.id}
-        id={word.id}
         word={word.word}
         translation={word.translateWord}
       />
