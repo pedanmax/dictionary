@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { actions as setActiveGroup } from '../../Redux/reducers/activeGroup.slice';
 import { actions as setTestGroup } from '../../Redux/reducers/testGroup.slice';
 import { actions as wordOperations } from '../../Redux/reducers/words.slice';
+import { actions as setTestingWords } from '../../Redux/reducers/testingWords.slice';
 import { StoreType } from '../../types/types';
 
 export type GroupProps = {
@@ -23,6 +24,7 @@ const Group = ({ group, count, variant } : GroupProps) => {
   // set testing group by click 'test' button
   const handleTestGroup = () => {
     dispatch(setTestGroup.setTestGroup(group));
+    dispatch(setTestingWords.writeWordsForTest({ filterWord: group, words: allWords }));
   };
   // set active group by click 'select' button
   const handleActiveGroup = () => {
@@ -36,7 +38,7 @@ const Group = ({ group, count, variant } : GroupProps) => {
     if (active) {
       dispatch(setActiveGroup.setActiveGroup(''));
     }
-    if (testGroup === group) {
+    if (test) {
       dispatch(setTestGroup.setTestGroup(''));
     }
   };

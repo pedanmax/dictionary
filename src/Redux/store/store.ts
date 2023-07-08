@@ -4,11 +4,13 @@ import { reducer as activeGroupSlice } from '../reducers/activeGroup.slice';
 import { reducer as testGroupSlice } from '../reducers/testGroup.slice';
 import { reducer as wordsVisibility } from '../reducers/wordsVisibility.slice';
 import { reducer as stateTestSlice } from '../reducers/stateTest.slice';
+import { reducer as testingWords } from '../reducers/testingWords.slice';
 
 const reducers = combineReducers({
   words: wordsSlice,
   activeGroup: activeGroupSlice,
   testGroup: testGroupSlice,
+  testingWords,
   stateTest: stateTestSlice,
   wordsVisibility,
 });

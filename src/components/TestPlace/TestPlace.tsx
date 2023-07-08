@@ -13,6 +13,9 @@ import { StoreType } from '../../types/types';
 // i must save all values of translate to object
 // enable 'results' button if all fields isn't empty
 // handle leave from page if test is started
+// show popap with message after leaving
+// show popap with result test
+// change shuffling
 
 const TestPlace = () => {
   const [stateResultButton, setStateResultButton] = useState(false);

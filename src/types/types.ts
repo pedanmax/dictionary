@@ -9,6 +9,7 @@ export type StoreType = {
   words?: [WordType],
   activeGroup: string,
   testGroup: string,
+  testingWords: [WordType]
   stateTest: { isStarted: boolean, testFields: any };
   wordsVisibility: boolean,
 };
