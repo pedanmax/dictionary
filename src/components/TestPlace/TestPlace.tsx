@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Stack, Button } from '@mui/material';
 import { actions } from '../../Redux/reducers/stateTest.slice';
@@ -10,12 +11,24 @@ import { StoreType } from '../../types/types';
 // load words in random order
 // if user leave test page test and test group will be reset
 // i must save all values of translate to object
+// enable 'results' button if all fields isn't empty
 
 const TestPlace = () => {
-  const { isStarted } = useSelector((state: StoreType) => state.stateTest);
+  const { isStarted, testFields } = useSelector((state: StoreType) => state.stateTest);
+  const words = useSelector((state: StoreType) => state.words);
+  const testGroup = useSelector((state: StoreType) => state.testGroup);
+  const testWords = words?.filter((word) => word.group === testGroup);
   const dispatch = useDispatch();
   const handleStartTest = () => dispatch(actions.startTest(true));
   const handleResetTest = () => dispatch(actions.resetTest(false));
+  const testFieldsKeys = Object.keys(testFields);
+  const [stateResultButton, setStateResultButton] = useState(false);
+  useEffect(() => {
+    if (testFieldsKeys.length === testWords?.length) {
+      const checkInputsValue = testFieldsKeys.map((key) => testFields[key].inputTranslation);
+      setStateResultButton(checkInputsValue.every((value) => value !== ''));
+    } else setStateResultButton(false);
+  }, [testFieldsKeys, testWords?.length, testFields]);
   return (
     <Stack
       spacing={4}
@@ -57,7 +70,7 @@ const TestPlace = () => {
           Start test
         </Button>
         <Button
-          disabled
+          disabled={!stateResultButton}
           sx={{
             '&.MuiButton-root': { backgroundColor: '#004668' },
             '&.MuiButton-root:hover': { backgroundColor: '#003954' },
