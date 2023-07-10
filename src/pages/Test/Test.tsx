@@ -27,6 +27,7 @@ const Test = () => {
         <Groups variant='test' />
         {testGroup && <TestPlace />}
       </Box>
+
     )
     : (<Empty text='test' />);
 };

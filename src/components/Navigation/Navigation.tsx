@@ -1,11 +1,35 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   List, ListItem, ListItemButton, ListItemIcon, Box, Typography,
 } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
-import { NavigationProps } from '../../types/types';
+import { useConfirm } from 'material-ui-confirm';
+import { useSelector, useDispatch } from 'react-redux';
+import { actions as stateTest } from '../../Redux/reducers/stateTest.slice';
+import { NavigationProps, StoreType } from '../../types/types';
 
 const Navigation = ({ closeDrawer } : NavigationProps) => {
+  const dispatch = useDispatch();
+  const { isStarted } = useSelector((state:StoreType) => state.stateTest);
+  const navigate = useNavigate();
+  const confirm = useConfirm();
+
+  const handleLeavePage = (way: string) => {
+    if (!isStarted) navigate(way);
+    else if (isStarted && way !== '/test') {
+      confirm({
+        description: 'If you leave page, test will be reset.',
+        confirmationButtonProps: { variant: 'contained', color: 'primary' },
+        cancellationButtonProps: { variant: 'outlined', color: 'primary' },
+      })
+        .then(() => {
+          dispatch(stateTest.resetTest(false));
+          navigate(way);
+        })
+        .catch(() => navigate('/test'));
+    }
+  };
+
   return (
     <Box>
       <List sx={{
@@ -19,34 +43,28 @@ const Navigation = ({ closeDrawer } : NavigationProps) => {
       }}
       >
         <ListItem onClick={closeDrawer}>
-          <Link to='/'>
-            <ListItemButton>
-              <ListItemIcon sx={{ minWidth: '35px' }}>
-                <HomeIcon />
-              </ListItemIcon>
-              <Typography fontWeight='500' color='#01012d'>Home</Typography>
-            </ListItemButton>
-          </Link>
+          <ListItemButton onClick={() => handleLeavePage('/')}>
+            <ListItemIcon sx={{ minWidth: '35px' }}>
+              <HomeIcon />
+            </ListItemIcon>
+            <Typography fontWeight='500' color='#01012d'>Home</Typography>
+          </ListItemButton>
         </ListItem>
         <ListItem onClick={closeDrawer}>
-          <Link to='/learn'>
-            <ListItemButton>
-              <ListItemIcon sx={{ minWidth: '35px' }}>
-                <HomeIcon />
-              </ListItemIcon>
-              <Typography fontWeight='500' color='#01012d'>Learn</Typography>
-            </ListItemButton>
-          </Link>
+          <ListItemButton onClick={() => handleLeavePage('/learn')}>
+            <ListItemIcon sx={{ minWidth: '35px' }}>
+              <HomeIcon />
+            </ListItemIcon>
+            <Typography fontWeight='500' color='#01012d'>Learn</Typography>
+          </ListItemButton>
         </ListItem>
         <ListItem onClick={closeDrawer}>
-          <Link to='/test'>
-            <ListItemButton>
-              <ListItemIcon sx={{ minWidth: '35px' }}>
-                <HomeIcon />
-              </ListItemIcon>
-              <Typography fontWeight='500' color='#01012d'>Test</Typography>
-            </ListItemButton>
-          </Link>
+          <ListItemButton onClick={() => handleLeavePage('/test')}>
+            <ListItemIcon sx={{ minWidth: '35px' }}>
+              <HomeIcon />
+            </ListItemIcon>
+            <Typography fontWeight='500' color='#01012d'>Test</Typography>
+          </ListItemButton>
         </ListItem>
       </List>
     </Box>
