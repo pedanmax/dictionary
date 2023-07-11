@@ -20,7 +20,7 @@ const Test = () => {
           fontSize='24px'
           fontWeight='500'
           color='primary'
-          mb='20px'
+          mb='30px'
         >
           Let's test your memory!
         </Typography>

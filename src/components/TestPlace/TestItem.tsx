@@ -40,19 +40,47 @@ const TestItem = ({ word, translation } : TestItemProps) => {
       alignItems='center'
       spacing={2}
     >
-      <Typography mt='15px'>{word}</Typography>
-      <HorizontalRuleIcon
-        color='primary'
-        sx={{ marginTop: '15px', alignSelf: 'flex-end' }}
-      />
+      <Stack
+        flexDirection='row'
+        flex='0 1 50%'
+      >
+        <Typography
+          sx={{
+            fontSize: {
+              xs: '14px',
+              sm: '16px',
+            },
+            flex: '1 1 auto',
+            textAlign: 'center',
+          }}
+        >
+          {word}
+        </Typography>
+        <HorizontalRuleIcon
+          color='primary'
+        />
+      </Stack>
       <TextField
-        variant='standard'
-        label='Translation'
+        variant='outlined'
         type='text'
         autoComplete='off'
         value={value}
         onChange={handleValue}
         disabled={!isStarted || resultIsOpen}
+        sx={{
+          flex: '0 1 50%',
+          alignItems: 'center',
+          '& .MuiInputBase-input': {
+            padding: '2px 8px',
+            fontSize: {
+              xs: '14px',
+              sm: '16px',
+            },
+          },
+          '& .MuiInputBase-root': {
+            maxWidth: '300px',
+          },
+        }}
       />
     </Stack>
   );

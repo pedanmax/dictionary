@@ -19,6 +19,7 @@ import TestResults from './TestResults';
 // show popap with result test
 // change shuffling
 // add reverse test
+// limit the execution of the test if the words are less than 5
 
 const TestPlace = () => {
   const [stateResultButton, setStateResultButton] = useState(false);
@@ -51,7 +52,7 @@ const TestPlace = () => {
   }, [testFieldsKeys, testWords?.length, testFields]);
 
   return (
-    <Box>
+    <Box sx={{ maxWidth: '1000px', margin: '0 auto' }}>
       {resultIsOpen && <TestResults />}
       <Stack
         spacing={4}

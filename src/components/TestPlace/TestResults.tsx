@@ -44,9 +44,7 @@ const TestResults = () => {
         >
           <CloseIcon />
         </IconButton>
-      </Stack
-
->
+      </Stack>
       {arrayWithWrongResult.length > 0
         ? (
           <Typography>
