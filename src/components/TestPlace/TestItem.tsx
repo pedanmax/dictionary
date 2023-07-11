@@ -22,7 +22,7 @@ const TestItem = ({ word, translation } : TestItemProps) => {
         word,
         translation,
         inputTranslation: event?.target.value,
-        correct: translation === event?.target.value.toLowerCase(),
+        correct: translation === event?.target.value.toLowerCase().trim(),
       },
     };
     dispatch(stateTest.writeTranslate(object));
@@ -34,8 +34,6 @@ const TestItem = ({ word, translation } : TestItemProps) => {
       setValue('');
     }
   }, [testFields]);
-
-  const comparing = value.toLowerCase().trim() === translation;
   return (
     <Stack
       direction='row'
@@ -56,7 +54,6 @@ const TestItem = ({ word, translation } : TestItemProps) => {
         onChange={handleValue}
         disabled={!isStarted || resultIsOpen}
       />
-      {!comparing && <Typography color='error'>incorrect transtation</Typography>}
     </Stack>
   );
 };

@@ -28,12 +28,25 @@ const TestResults = () => {
         marginBottom: '20px',
       }}
     >
-      <Typography>
-        Your result is
-        {' '}
-        {result}
-        .
-      </Typography>
+      <Stack
+        flexDirection='row'
+        justifyContent='space-between'
+        alignItems='center'
+      >
+        <Typography>
+          Your result is
+          {' '}
+          {result}
+          .
+        </Typography>
+        <IconButton
+          onClick={handleOpen}
+        >
+          <CloseIcon />
+        </IconButton>
+      </Stack
+
+>
       {arrayWithWrongResult.length > 0
         ? (
           <Typography>
@@ -44,16 +57,6 @@ const TestResults = () => {
           </Typography>
         )
         : <Typography>Everything is right!</Typography>}
-      <IconButton
-        sx={{
-          position: 'absolute',
-          right: '10px',
-          top: '10px',
-        }}
-        onClick={handleOpen}
-      >
-        <CloseIcon />
-      </IconButton>
     </Stack>
   );
 };
