@@ -10,7 +10,7 @@ export type StoreType = {
   activeGroup: string,
   testGroup: string,
   testingWords: [WordType]
-  stateTest: { isStarted: boolean, testFields: any };
+  stateTest: { isStarted: boolean, resultIsOpen: boolean, testFields: any };
   wordsVisibility: boolean,
 };
 

@@ -13,7 +13,7 @@ type TestItemProps = {
 
 const TestItem = ({ word, translation } : TestItemProps) => {
   const dispatch = useDispatch();
-  const { isStarted, testFields } = useSelector((state: StoreType) => state.stateTest);
+  const { isStarted, testFields, resultIsOpen } = useSelector((state: StoreType) => state.stateTest);
   const [value, setValue] = useState('');
   const handleValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event?.target.value);
@@ -54,7 +54,7 @@ const TestItem = ({ word, translation } : TestItemProps) => {
         autoComplete='off'
         value={value}
         onChange={handleValue}
-        disabled={!isStarted}
+        disabled={!isStarted || resultIsOpen}
       />
       {!comparing && <Typography color='error'>incorrect transtation</Typography>}
     </Stack>

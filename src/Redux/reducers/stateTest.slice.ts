@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const stateTest = createSlice({
   name: 'stateTest',
-  initialState: { isStarted: false, testFields: {} },
+  initialState: { isStarted: false, resultIsOpen: false, testFields: {} },
   reducers: {
     startTest: (state, action) => {
       return { ...state, isStarted: action.payload };
@@ -12,6 +12,9 @@ export const stateTest = createSlice({
     },
     writeTranslate: (state, action) => {
       return { ...state, testFields: { ...state.testFields, ...action.payload } };
+    },
+    resultIsOpen: (state, action) => {
+      return { ...state, resultIsOpen: action.payload };
     },
   },
 });

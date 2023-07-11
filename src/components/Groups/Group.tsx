@@ -56,9 +56,15 @@ const Group = ({ group, count, variant } : GroupProps) => {
         position: 'relative',
         boxShadow: shadow,
         transition: 'all 0.3s ease',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
-      <CardContent>
+      <CardContent
+        sx={{
+          flex: '1 1 auto',
+        }}
+      >
         <Typography
           textAlign='center'
         >
