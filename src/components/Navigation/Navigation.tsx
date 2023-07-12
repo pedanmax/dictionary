@@ -6,6 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import { useConfirm } from 'material-ui-confirm';
 import { useSelector, useDispatch } from 'react-redux';
 import { actions as stateTest } from '../../Redux/reducers/stateTest.slice';
+import { actions as testGroup } from '../../Redux/reducers/testGroup.slice';
 import { NavigationProps, StoreType } from '../../types/types';
 
 const Navigation = ({ closeDrawer } : NavigationProps) => {
@@ -15,8 +16,10 @@ const Navigation = ({ closeDrawer } : NavigationProps) => {
   const confirm = useConfirm();
 
   const handleLeavePage = (way: string) => {
-    if (!isStarted) navigate(way);
-    else if (isStarted && way !== '/test') {
+    if (!isStarted) {
+      navigate(way);
+      dispatch(testGroup.setTestGroup(''));
+    } else if (isStarted && way !== '/test') {
       confirm({
         description: 'If you leave page, test will be reset.',
         confirmationButtonProps: { variant: 'contained', color: 'primary' },
