@@ -39,17 +39,7 @@ const LearnPlace = () => {
   });
 
   return (
-    <Stack
-      sx={{
-        backgroundColor: '#fff',
-        padding: '10px',
-        borderRadius: '5px',
-        boxSizing: 'border-box',
-        maxWidth: '1000px',
-        margin: '0 auto',
-      }}
-      alignItems='center'
-    >
+    <>
       <Stack
         direction='row'
         columnGap='10px'
@@ -73,33 +63,45 @@ const LearnPlace = () => {
         </IconButton>
       </Stack>
       <Stack
-        direction='column'
-        width='100%'
-        justifyContent='space-between'
+        sx={{
+          backgroundColor: '#fff',
+          padding: '10px',
+          borderRadius: '5px',
+          boxSizing: 'border-box',
+          maxWidth: '1000px',
+          margin: '0 auto',
+        }}
+        alignItems='center'
       >
-        {words?.map((word) => {
-          return swapped
-            ? (
-              <LearnItem
-                right={word.word}
-                left={word.translateWord}
-                key={word.id}
-                id={word.id}
-                visible={word.visible}
-              />
-            )
-            : (
-              <LearnItem
-                right={word.translateWord}
-                left={word.word}
-                key={word.id}
-                id={word.id}
-                visible={word.visible}
-              />
-            );
-        })}
+        <Stack
+          direction='column'
+          width='100%'
+          justifyContent='space-between'
+        >
+          {words?.map((word) => {
+            return swapped
+              ? (
+                <LearnItem
+                  right={word.word}
+                  left={word.translateWord}
+                  key={word.id}
+                  id={word.id}
+                  visible={word.visible}
+                />
+              )
+              : (
+                <LearnItem
+                  right={word.translateWord}
+                  left={word.word}
+                  key={word.id}
+                  id={word.id}
+                  visible={word.visible}
+                />
+              );
+          })}
+        </Stack>
       </Stack>
-    </Stack>
+    </>
   );
 };
 

@@ -21,6 +21,7 @@ const Group = ({ group, count, variant } : GroupProps) => {
   const active = activeGroup === group;
   const test = testGroup === group;
 
+  window.addEventListener('beforeunload', () => dispatch(setTestGroup.setTestGroup('')));
   // set testing group by click 'test' button
   const handleTestGroup = () => {
     dispatch(setTestGroup.setTestGroup(group));
