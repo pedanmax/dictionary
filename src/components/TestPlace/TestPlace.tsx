@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Stack, Button, Box } from '@mui/material';
 import { actions } from '../../Redux/reducers/stateTest.slice';
+import { actions as testingWords } from '../../Redux/reducers/testingWords.slice';
 import GroupTestItems from './GroupTestItems';
 import { StoreType } from '../../types/types';
 import TestResults from './TestResults';
@@ -10,8 +11,10 @@ import TestResults from './TestResults';
 // add reverse test
 // limit the execution of the test if the words are less than 5
 // change buttons in learn page
+// forbiden typing number
 
 const TestPlace = () => {
+  const [swapped, setSwapped] = useState(false);
   const [stateResultButton, setStateResultButton] = useState(false);
   const { isStarted, testFields, resultIsOpen } = useSelector((state: StoreType) => state.stateTest);
   const words = useSelector((state: StoreType) => state.words);
@@ -32,6 +35,11 @@ const TestPlace = () => {
     dispatch(actions.resultIsOpen(true));
   };
 
+  const handleSwappedState = () => {
+    setSwapped(!swapped);
+    dispatch(testingWords.shuffleWords());
+  };
+
   const testFieldsKeys = Object.keys(testFields);
 
   useEffect(() => {
@@ -47,6 +55,7 @@ const TestPlace = () => {
         direction='row'
         spacing={2}
         mb='20px'
+        justifyContent='center'
       >
         <Button
           sx={{
@@ -84,6 +93,18 @@ const TestPlace = () => {
         >
           Results
         </Button>
+        <Button
+          disabled={isStarted}
+          onClick={handleSwappedState}
+          sx={{
+            '&.MuiButton-root': { backgroundColor: '#004668' },
+            '&.MuiButton-root:hover': { backgroundColor: '#003954' },
+            '&.Mui-disabled': { backgroundColor: '#516e83' },
+          }}
+          variant='contained'
+        >
+          Swap
+        </Button>
       </Stack>
       {resultIsOpen && <TestResults />}
       <Stack
@@ -97,7 +118,7 @@ const TestPlace = () => {
           margin: '0 auto',
         }}
       >
-        <GroupTestItems />
+        <GroupTestItems swapped={swapped} />
       </Stack>
     </Box>
   );
