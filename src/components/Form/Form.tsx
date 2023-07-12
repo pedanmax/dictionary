@@ -50,7 +50,10 @@ const Form = () => {
                 value: true,
                 message: 'Field is required',
               },
-              validate: (value) => !!value.match(/^[^\s]+(?:$|.*[^\s]+$)/) || 'value cant start/end or contain only white spacing',
+              validate: {
+                whiteSpaces: (value) => !!value.match(/^[^\s]+(?:$|.*[^\s]+$)/) || 'value cant start/end or contain only white spacing',
+                onlyNumbers: (value) => !!value.match(/^[a-z][a-z\s]*$/) || 'value must be without numbers',
+              },
             }}
             render={({ field: { ref, ...field } }) => (
               <TextField
@@ -77,7 +80,10 @@ const Form = () => {
                 value: true,
                 message: 'Field is required',
               },
-              validate: (value) => !!value.match(/^[^\s]+(?:$|.*[^\s]+$)/) || 'value cant start/end or contain only white spacing',
+              validate: {
+                whiteSpaces: (value) => !!value.match(/^[^\s]+(?:$|.*[^\s]+$)/) || 'value cant start/end or contain only white spacing',
+                onlyNumbers: (value) => !!value.match(/^[a-z][a-z\s]*$/) || 'value must be without numbers',
+              },
             }}
             render={({ field: { ref, ...field } }) => (
               <TextField
