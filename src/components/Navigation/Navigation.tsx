@@ -3,11 +3,19 @@ import {
   List, ListItem, ListItemButton, ListItemIcon, Box, Typography,
 } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
+import SchoolIcon from '@mui/icons-material/School';
+import PsychologyAltIcon from '@mui/icons-material/PsychologyAlt';
 import { useConfirm } from 'material-ui-confirm';
 import { useSelector, useDispatch } from 'react-redux';
 import { actions as stateTest } from '../../Redux/reducers/stateTest.slice';
 import { actions as testGroup } from '../../Redux/reducers/testGroup.slice';
 import { NavigationProps, StoreType } from '../../types/types';
+
+const links = [
+  { link: '/', text: 'Home', icon: <HomeIcon /> },
+  { link: '/learn', text: 'Learn', icon: <SchoolIcon /> },
+  { link: '/test', text: 'Test', icon: <PsychologyAltIcon /> },
+];
 
 const Navigation = ({ closeDrawer } : NavigationProps) => {
   const dispatch = useDispatch();
@@ -45,30 +53,18 @@ const Navigation = ({ closeDrawer } : NavigationProps) => {
         },
       }}
       >
-        <ListItem onClick={closeDrawer}>
-          <ListItemButton onClick={() => handleLeavePage('/')}>
-            <ListItemIcon sx={{ minWidth: '35px' }}>
-              <HomeIcon />
-            </ListItemIcon>
-            <Typography fontWeight='500' color='#01012d'>Home</Typography>
-          </ListItemButton>
-        </ListItem>
-        <ListItem onClick={closeDrawer}>
-          <ListItemButton onClick={() => handleLeavePage('/learn')}>
-            <ListItemIcon sx={{ minWidth: '35px' }}>
-              <HomeIcon />
-            </ListItemIcon>
-            <Typography fontWeight='500' color='#01012d'>Learn</Typography>
-          </ListItemButton>
-        </ListItem>
-        <ListItem onClick={closeDrawer}>
-          <ListItemButton onClick={() => handleLeavePage('/test')}>
-            <ListItemIcon sx={{ minWidth: '35px' }}>
-              <HomeIcon />
-            </ListItemIcon>
-            <Typography fontWeight='500' color='#01012d'>Test</Typography>
-          </ListItemButton>
-        </ListItem>
+        {links.map((link) => {
+          return (
+            <ListItem onClick={closeDrawer} key={link.text}>
+              <ListItemButton onClick={() => handleLeavePage(link.link)}>
+                <ListItemIcon sx={{ minWidth: '35px' }}>
+                  {link.icon}
+                </ListItemIcon>
+                <Typography fontWeight='500' color='#01012d'>{link.text}</Typography>
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
       </List>
     </Box>
   );

@@ -9,6 +9,7 @@ import TestResults from './TestResults';
 
 // add reverse test
 // limit the execution of the test if the words are less than 5
+// change buttons in learn page
 
 const TestPlace = () => {
   const [stateResultButton, setStateResultButton] = useState(false);
