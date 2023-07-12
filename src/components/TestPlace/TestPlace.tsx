@@ -8,9 +8,8 @@ import GroupTestItems from './GroupTestItems';
 import { StoreType } from '../../types/types';
 import TestResults from './TestResults';
 
-// add reverse test
 // limit the execution of the test if the words are less than 5
-// change buttons in learn page
+// add image in test result
 // forbiden typing number
 
 const TestPlace = () => {
@@ -40,6 +39,13 @@ const TestPlace = () => {
     dispatch(testingWords.shuffleWords());
   };
 
+  const buttons = [
+    { text: 'reset', function: handleResetTest, disabled: !isStarted },
+    { text: 'start', function: handleStartTest, disabled: isStarted },
+    { text: 'swap', function: handleSwappedState, disabled: isStarted },
+    { text: 'result', function: handleResultTest, disabled: !stateResultButton },
+  ];
+
   const testFieldsKeys = Object.keys(testFields);
 
   useEffect(() => {
@@ -57,54 +63,23 @@ const TestPlace = () => {
         mb='20px'
         justifyContent='center'
       >
-        <Button
-          sx={{
-            '&.MuiButton-root': { backgroundColor: '#004668' },
-            '&.MuiButton-root:hover': { backgroundColor: '#003954' },
-            '&.Mui-disabled': { backgroundColor: '#516e83' },
-          }}
-          variant='contained'
-          onClick={handleResetTest}
-          disabled={!isStarted}
-        >
-          Reset
-        </Button>
-        <Button
-          sx={{
-            '&.MuiButton-root': { backgroundColor: '#004668' },
-            '&.MuiButton-root:hover': { backgroundColor: '#003954' },
-            '&.Mui-disabled': { backgroundColor: '#516e83' },
-          }}
-          variant='contained'
-          onClick={handleStartTest}
-          disabled={isStarted}
-        >
-          Start
-        </Button>
-        <Button
-          disabled={!stateResultButton}
-          onClick={handleResultTest}
-          sx={{
-            '&.MuiButton-root': { backgroundColor: '#004668' },
-            '&.MuiButton-root:hover': { backgroundColor: '#003954' },
-            '&.Mui-disabled': { backgroundColor: '#516e83' },
-          }}
-          variant='contained'
-        >
-          Results
-        </Button>
-        <Button
-          disabled={isStarted}
-          onClick={handleSwappedState}
-          sx={{
-            '&.MuiButton-root': { backgroundColor: '#004668' },
-            '&.MuiButton-root:hover': { backgroundColor: '#003954' },
-            '&.Mui-disabled': { backgroundColor: '#516e83' },
-          }}
-          variant='contained'
-        >
-          Swap
-        </Button>
+        {buttons.map((button) => {
+          return (
+            <Button
+              key={button.text}
+              sx={{
+                '&.MuiButton-root': { backgroundColor: '#004668' },
+                '&.MuiButton-root:hover': { backgroundColor: '#003954' },
+                '&.Mui-disabled': { backgroundColor: '#516e83' },
+              }}
+              variant='contained'
+              onClick={button.function}
+              disabled={button.disabled}
+            >
+              {button.text}
+            </Button>
+          );
+        })}
       </Stack>
       {resultIsOpen && <TestResults />}
       <Stack

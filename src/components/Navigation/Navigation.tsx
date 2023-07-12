@@ -19,6 +19,7 @@ const links = [
 
 const Navigation = ({ closeDrawer } : NavigationProps) => {
   const dispatch = useDispatch();
+  const testGroupName = useSelector((state: StoreType) => state.testGroup);
   const { isStarted } = useSelector((state:StoreType) => state.stateTest);
   const navigate = useNavigate();
   const confirm = useConfirm();
@@ -26,7 +27,7 @@ const Navigation = ({ closeDrawer } : NavigationProps) => {
   const handleLeavePage = (way: string) => {
     if (!isStarted) {
       navigate(way);
-      dispatch(testGroup.setTestGroup(''));
+      if (testGroupName) dispatch(testGroup.setTestGroup(''));
     } else if (isStarted && way !== '/test') {
       confirm({
         description: 'If you leave page, test will be reset.',
