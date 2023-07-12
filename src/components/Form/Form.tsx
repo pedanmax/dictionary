@@ -32,6 +32,9 @@ const Form = () => {
     dispatch(actions.addWord(word));
   };
 
+  const str = 'abc1';
+  const arr = str.split('');
+  console.log(arr);
   return (
     <form
       className='form'
@@ -52,7 +55,7 @@ const Form = () => {
               },
               validate: {
                 whiteSpaces: (value) => !!value.match(/^[^\s]+(?:$|.*[^\s]+$)/) || 'value cant start/end or contain only white spacing',
-                onlyNumbers: (value) => !!value.match(/^[a-z][a-z\s]*$/) || 'value must be without numbers',
+                onlyNumbers: (value) => !value.match(/\d/) || 'value must be without numbers',
               },
             }}
             render={({ field: { ref, ...field } }) => (
@@ -82,7 +85,7 @@ const Form = () => {
               },
               validate: {
                 whiteSpaces: (value) => !!value.match(/^[^\s]+(?:$|.*[^\s]+$)/) || 'value cant start/end or contain only white spacing',
-                onlyNumbers: (value) => !!value.match(/^[a-z][a-z\s]*$/) || 'value must be without numbers',
+                onlyNumbers: (value) => !value.match(/\d/) || 'value must be without numbers',
               },
             }}
             render={({ field: { ref, ...field } }) => (
