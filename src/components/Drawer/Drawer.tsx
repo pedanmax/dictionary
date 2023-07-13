@@ -48,7 +48,7 @@ const Drawer = () => {
           },
         }}
       >
-        <Logo />
+        <Logo closeDrawer={closeDrawer} />
         <Navigation closeDrawer={closeDrawer} />
       </MenuDrawer>
     </Box>
