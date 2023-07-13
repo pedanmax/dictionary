@@ -39,6 +39,13 @@ const TestItem = ({ word, translation } : TestItemProps) => {
       direction='row'
       alignItems='center'
       spacing={2}
+      sx={{
+        borderBottom: '1px solid #c4c4c4',
+        padding: '10px',
+        '&.MuiStack-root': {
+          marginTop: '0px',
+        },
+      }}
     >
       <Stack
         flexDirection='row'

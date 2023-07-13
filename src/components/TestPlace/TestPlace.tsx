@@ -101,10 +101,10 @@ const TestPlace = () => {
         justifyContent='center'
         alignItems='center'
       >
-        <Typography component='h3' fontSize='26px' color='primary'>
+        <Typography component='h3' fontSize='26px' color='primary' textAlign='center'>
           You can't test a group with less than 5 words!
         </Typography>
-        <Typography component='h3' fontSize='22px' color='primary' mb='20px'>
+        <Typography component='h3' fontSize='22px' color='primary' mb='20px' textAlign='center'>
           Add more words or change the group!
         </Typography>
         <img src={oopsImg} alt='oops' style={{ borderRadius: '10px', maxWidth: '100%' }} />

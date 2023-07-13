@@ -7,11 +7,16 @@ const LearnWord = ({ wordOriginal } : { wordOriginal: string }) => {
       direction='row'
       alignItems='center'
       flex='0 1 40%'
+      sx={{
+        flexBasis: {
+          xs: '55%',
+          sm: '50%',
+        },
+      }}
     >
       <Typography
         sx={{
           flex: '1 1 auto',
-          padding: '5px 0px',
           fontSize: {
             xs: '14px',
             sm: '16px',
