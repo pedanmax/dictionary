@@ -22,7 +22,7 @@ const TestItem = ({ word, translation } : TestItemProps) => {
         word,
         translation,
         inputTranslation: event?.target.value,
-        correct: translation === event?.target.value.toLowerCase().trim(),
+        correct: translation.toLocaleLowerCase().trim() === event?.target.value.toLowerCase().trim(),
       },
     };
     dispatch(stateTest.writeTranslate(object));
