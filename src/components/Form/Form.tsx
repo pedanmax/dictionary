@@ -32,9 +32,6 @@ const Form = () => {
     dispatch(actions.addWord(word));
   };
 
-  const str = 'abc1';
-  const arr = str.split('');
-  console.log(arr);
   return (
     <form
       className='form'

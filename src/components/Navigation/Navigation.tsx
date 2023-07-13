@@ -40,6 +40,7 @@ const Navigation = ({ closeDrawer } : NavigationProps) => {
         })
         .catch(() => navigate('/test'));
     }
+    dispatch(stateTest.resultIsOpen(false));
   };
 
   return (

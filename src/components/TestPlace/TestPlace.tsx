@@ -11,7 +11,6 @@ import TestResults from './TestResults';
 import oopsImg from '../../assets/oops.png';
 
 // add image in test result
-// forbiden typing number
 
 const TestPlace = () => {
   const [swapped, setSwapped] = useState(false);
