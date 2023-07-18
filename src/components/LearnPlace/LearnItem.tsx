@@ -7,14 +7,7 @@ import LearnTranslate from './LearnTranslate';
 import LearnWord from './LearnWord';
 import { actions } from '../../Redux/reducers/words.slice';
 import { actions as setActiveGroup } from '../../Redux/reducers/activeGroup.slice';
-import { StoreType } from '../../types/types';
-
-export type LearnItemProps = {
-  left: string,
-  right: string,
-  id: number,
-  visible: boolean,
-};
+import { LearnItemProps, StoreType } from '../../types/types';
 
 const LearnItem = ({ left, right, id, visible } : LearnItemProps) => {
   const dispatch = useDispatch();

@@ -22,7 +22,7 @@ const Footer = () => {
           spacing={4}
         >
           <Link
-            href='https://github.com/pedanmax'
+            href='https://github.com/pedanmax/dictionary'
             target='_blank'
             underline="none"
             sx={{

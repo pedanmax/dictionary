@@ -4,13 +4,7 @@ import { actions as setActiveGroup } from '../../Redux/reducers/activeGroup.slic
 import { actions as setTestGroup } from '../../Redux/reducers/testGroup.slice';
 import { actions as wordOperations } from '../../Redux/reducers/words.slice';
 import { actions as setTestingWords } from '../../Redux/reducers/testingWords.slice';
-import { StoreType } from '../../types/types';
-
-export type GroupProps = {
-  group: string | undefined,
-  count: number | undefined,
-  variant: string,
-};
+import { GroupProps, StoreType } from '../../types/types';
 
 const Group = ({ group, count, variant } : GroupProps) => {
   const dispatch = useDispatch();
@@ -21,16 +15,20 @@ const Group = ({ group, count, variant } : GroupProps) => {
   const active = activeGroup === group;
   const test = testGroup === group;
 
+  // clear test group before unload
   window.addEventListener('beforeunload', () => dispatch(setTestGroup.setTestGroup('')));
+
   // set testing group by click 'test' button
   const handleTestGroup = () => {
     dispatch(setTestGroup.setTestGroup(group));
     dispatch(setTestingWords.writeWordsForTest({ filterWord: group, words: allWords }));
   };
+
   // set active group by click 'select' button
   const handleActiveGroup = () => {
     dispatch(setActiveGroup.setActiveGroup(group));
   };
+
   // remove group by click 'remove' button
   const removeGroupFromWords = () => {
     const filteredWords = allWords?.filter((words) => words.group === group);

@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import Form from '../../components/Form/Form';
 import Words from '../../components/Words/Words';
 import { StoreType } from '../../types/types';
-import './Home.scss';
 
 const Home = () => {
   const words = useSelector((state:StoreType) => state.words);

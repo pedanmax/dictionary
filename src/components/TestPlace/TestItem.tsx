@@ -4,12 +4,7 @@ import { Stack, Typography, TextField } from '@mui/material';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import { useSelector, useDispatch } from 'react-redux';
 import { actions as stateTest } from '../../Redux/reducers/stateTest.slice';
-import { StoreType } from '../../types/types';
-
-type TestItemProps = {
-  word: string,
-  translation: string,
-};
+import { StoreType, TestItemProps } from '../../types/types';
 
 const TestItem = ({ word, translation } : TestItemProps) => {
   const dispatch = useDispatch();
@@ -34,6 +29,7 @@ const TestItem = ({ word, translation } : TestItemProps) => {
       setValue('');
     }
   }, [testFields]);
+
   return (
     <Stack
       direction='row'

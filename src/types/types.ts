@@ -31,3 +31,26 @@ export type WordType = {
 export type NavigationProps = {
   closeDrawer?: () => void;
 };
+
+export type TestItemProps = {
+  word: string,
+  translation: string,
+};
+
+export type LearnTranslateProps = {
+  translate: string,
+  visible: boolean,
+};
+
+export type GroupProps = {
+  group: string | undefined,
+  count: number | undefined,
+  variant: string,
+};
+
+export type LearnItemProps = {
+  left: string,
+  right: string,
+  id: number,
+  visible: boolean,
+};

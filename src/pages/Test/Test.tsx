@@ -4,7 +4,6 @@ import { Typography, Box } from '@mui/material';
 import Empty from '../../components/Empty/Empty';
 import Groups from '../../components/Groups/Groups';
 import TestPlace from '../../components/TestPlace/TestPlace';
-import './Test.scss';
 import { StoreType } from '../../types/types';
 
 const Test = () => {

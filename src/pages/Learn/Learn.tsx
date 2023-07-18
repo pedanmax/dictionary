@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import { Typography, Box } from '@mui/material';
 import Groups from '../../components/Groups/Groups';
 import LearnPlace from '../../components/LearnPlace/LearnPlace';
-import './Learn.scss';
 import { StoreType } from '../../types/types';
 import Empty from '../../components/Empty/Empty';
 

@@ -1,10 +1,6 @@
 /* eslint-disable max-len */
 import { Typography, Stack } from '@mui/material';
-
-type LearnTranslateProps = {
-  translate: string,
-  visible: boolean,
-};
+import { LearnTranslateProps } from '../../types/types';
 
 const LearnTranslate = ({ translate, visible } : LearnTranslateProps) => {
   return (

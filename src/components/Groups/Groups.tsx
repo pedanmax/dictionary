@@ -1,9 +1,7 @@
 import { Stack } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { WordType, StoreType } from '../../types/types';
+import { StoreType } from '../../types/types';
 import Group from './Group';
-
-export type Array = WordType[];
 
 const Groups = ({ variant } : { variant : string }) => {
   const words = useSelector((state: StoreType) => state.words);

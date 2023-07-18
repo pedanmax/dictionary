@@ -13,6 +13,7 @@ const Logo = ({ closeDrawer } : NavigationProps) => {
   const { isStarted } = useSelector((state:StoreType) => state.stateTest);
   const navigate = useNavigate();
   const confirm = useConfirm();
+
   const handleLeavePage = (way: string) => {
     if (!isStarted) {
       navigate(way);
@@ -31,6 +32,7 @@ const Logo = ({ closeDrawer } : NavigationProps) => {
     }
     dispatch(stateTest.resultIsOpen(false));
   };
+
   return (
     <Box
       sx={{

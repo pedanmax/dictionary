@@ -10,8 +10,6 @@ import { StoreType } from '../../types/types';
 import TestResults from './TestResults';
 import oopsImg from '../../assets/oops.png';
 
-// add image in test result
-
 const TestPlace = () => {
   const [swapped, setSwapped] = useState(false);
   const [stateResultButton, setStateResultButton] = useState(false);
