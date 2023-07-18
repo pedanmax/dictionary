@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import {
@@ -5,7 +6,6 @@ import {
 } from '@mui/material';
 import { WordType, SubmitType } from '../../types/types';
 import { actions } from '../../Redux/reducers/words.slice';
-import './Form.scss';
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const Form = () => {
     });
     const id = Math.floor(Math.random() * 1000);
     const visible = false;
-    const word:WordType = { ...data, id, visible };
+    const word:WordType = { ...data, id, visible, word: data.word.trim(), translateWord: data.translateWord.trim() };
     dispatch(actions.addWord(word));
   };
 
@@ -51,8 +51,8 @@ const Form = () => {
                 message: 'Field is required',
               },
               validate: {
-                whiteSpaces: (value) => !!value.match(/^[^\s]+(?:$|.*[^\s]+$)/) || 'value cant start/end or contain only white spacing',
-                onlyNumbers: (value) => !value.match(/\d/) || 'value must be without numbers',
+                whiteSpaces: (value) => value.trim() !== '' || 'Value cant include only white spacing',
+                onlyNumbers: (value) => !value.match(/\d/) || 'Value must be without numbers',
               },
             }}
             render={({ field: { ref, ...field } }) => (
@@ -81,7 +81,7 @@ const Form = () => {
                 message: 'Field is required',
               },
               validate: {
-                whiteSpaces: (value) => !!value.match(/^[^\s]+(?:$|.*[^\s]+$)/) || 'value cant start/end or contain only white spacing',
+                whiteSpaces: (value) => value.trim() !== '' || 'Value cant include only white spacing',
                 onlyNumbers: (value) => !value.match(/\d/) || 'value must be without numbers',
               },
             }}
@@ -110,7 +110,7 @@ const Form = () => {
                 value: true,
                 message: 'Field is required',
               },
-              validate: (value) => !!value.match(/^[^\s]+(?:$|.*[^\s]+$)/) || 'value cant start/end or contain only white spacing',
+              validate: (value) => value.trim() !== '' || 'Value cant include only white spacing',
             }}
             render={({ field: { ref, ...field } }) => (
               <TextField
