@@ -35,6 +35,7 @@ export type NavigationProps = {
 export type TestItemProps = {
   word: string,
   translation: string,
+  isHighlighted: boolean,
 };
 
 export type LearnTranslateProps = {

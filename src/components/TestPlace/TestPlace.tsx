@@ -12,11 +12,13 @@ import oopsImg from '../../assets/oops.png';
 
 const TestPlace = () => {
   const [swapped, setSwapped] = useState(false);
+  const [isHighlighted, setIsHighlighted] = useState(false);
   const [stateResultButton, setStateResultButton] = useState(false);
   const { isStarted, testFields, resultIsOpen } = useSelector((state: StoreType) => state.stateTest);
   const testWords = useSelector((state:StoreType) => state.testingWords);
   const countTestWords = testWords && testWords?.length >= 5;
   const dispatch = useDispatch();
+
   const handleStartTest = () => {
     dispatch(actions.startTest(true));
   };
@@ -24,16 +26,20 @@ const TestPlace = () => {
   const handleResetTest = () => {
     dispatch(actions.resetTest(false));
     dispatch(actions.resultIsOpen(false));
+    setIsHighlighted(false);
   };
 
   const handleResultTest = () => {
     dispatch(actions.resultIsOpen(true));
+    setIsHighlighted(true);
   };
 
   const handleSwappedState = () => {
     setSwapped(!swapped);
     dispatch(testingWords.shuffleWords());
   };
+
+  const handleOutlineInput = () => setIsHighlighted(false);
 
   const buttons = [
     { text: 'reset', function: handleResetTest, disabled: !isStarted },
@@ -78,7 +84,7 @@ const TestPlace = () => {
             );
           })}
         </Stack>
-        {resultIsOpen && <TestResults />}
+        {resultIsOpen && <TestResults handleOutlineInput={handleOutlineInput} />}
         <Stack
           spacing={4}
           sx={{
@@ -90,7 +96,7 @@ const TestPlace = () => {
             margin: '0 auto',
           }}
         >
-          <GroupTestItems swapped={swapped} />
+          <GroupTestItems swapped={swapped} isHighlighted={isHighlighted} />
         </Stack>
       </Box>
     )

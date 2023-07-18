@@ -6,10 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { actions as stateTest } from '../../Redux/reducers/stateTest.slice';
 import { StoreType, TestItemProps } from '../../types/types';
 
-const TestItem = ({ word, translation } : TestItemProps) => {
+const TestItem = ({ word, translation, isHighlighted } : TestItemProps) => {
   const dispatch = useDispatch();
   const { isStarted, testFields, resultIsOpen } = useSelector((state: StoreType) => state.stateTest);
   const [value, setValue] = useState('');
+  const correct = translation.toLocaleLowerCase().trim() !== value.toLowerCase().trim();
   const handleValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event?.target.value);
     const object = {
@@ -73,8 +74,10 @@ const TestItem = ({ word, translation } : TestItemProps) => {
         sx={{
           flex: '0 1 50%',
           alignItems: 'center',
+          borderRadius: '10px',
           '& .MuiInputBase-input': {
             padding: '2px 8px',
+            // border: '1px solid red',
             fontSize: {
               xs: '14px',
               sm: '16px',
@@ -82,6 +85,7 @@ const TestItem = ({ word, translation } : TestItemProps) => {
           },
           '& .MuiInputBase-root': {
             maxWidth: '300px',
+            outline: isHighlighted && correct ? '1px solid red' : '0',
           },
         }}
       />
