@@ -18,7 +18,7 @@ const LearnTranslate = ({ translate, visible } : LearnTranslateProps) => {
       <Typography
         sx={{
           transition: 'all .6s ease',
-          opacity: visible ? '1' : '0',
+          // opacity: visible ? '1' : '0',
           flex: '1 1 auto',
           fontSize: {
             xs: '14px',
@@ -30,7 +30,7 @@ const LearnTranslate = ({ translate, visible } : LearnTranslateProps) => {
         }}
         textAlign='center'
       >
-        {translate}
+        {visible ? translate : '********'}
       </Typography>
     </Stack>
   );
